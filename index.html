@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mening Chiroyli Media Galereyam</title>
+    <style>
+        /* Umumiy Sahifa Stili */
+        :root {
+            --bg-color: #4a698f7f; /* To'q fon */
+            --card-bg: #f46eeb3c; /* Kartalar foni */
+            --text-color: #084eff;
+            --accent-color: #00bcd4; /* Och ko'k urg'u */
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: white;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .subtitle {
+            color: #888;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+
+        /* Asosiy Konteyner (Grid) */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        /* Karta Stili */
+        .media-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden; /* Kontent chetdan chiqmasligi uchun */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: var(--transition);
+            border: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Sichqoncha ustiga kelgandagi effekt */
+        .media-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,188,212,0.3); /* Accent rangda soya */
+            border-color: var(--accent-color);
+        }
+
+        /* Karta ichidagi matnlar */
+        .card-content {
+            padding: 15px;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .card-desc {
+            font-size: 0.9em;
+            color: #aaa;
+        }
+
+        /* Media Elementlari Stili */
+        img, video, iframe {
+            width: 100%;
+            display: block; /* Tagidagi bo'shliqni yo'qotadi */
+            border: none;
+        }
+
+        /* Rasm maxsus stili */
+        .media-card img {
+            height: 200px;
+            object-fit: cover; /* Rasmni buzmasdan joylashtiradi */
+        }
+
+        /* Audio maxsus stili */
+        audio {
+            width: 100%;
+            padding: 10px;
+            background: #333;
+        }
+
+        /* YouTube Responsive qoplamasi */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 nisbat */
+            height: 0;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Kichik ekranlar uchun moslashtirish */
+        @media (max-width: 600px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Multimedia Galereyasi</h1>
+    <p class="subtitle">HTML5 va Embed elementlari amaliyoti</p>
+
+    <div class="gallery-grid">
+
+        <div class="media-card">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=600" alt="Dasturlash noutbuki">
+            <div class="card-content">
+                <div class="card-title">Internetdan Rasm</div>
+                <div class="card-desc">Unsplash'dan olingan chiroyli dasturlash surati. `object-fit: cover` ishlatilgan.</div>
+            </div>
+        </div>
+
+        <div class="media-card">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/E6vwmTpKUjM?si=aAb995Yd_FqYAFwZ" title="YouTube video player" allowfullscreen></iframe>
+            </div>
+            <div class="card-content">
+                <div class="card-title">YouTube Video</div>
+                <div class="card-desc">Responsive `iframe` yordamida joylashtirilgan video.</div>
+            </div>
+        </div>
+
+
+        <div class="media-card">
+            <div style="height: 200px; display: flex; align-items: center; justify-content: center; background: #2a2a2a; color: #555; font-size: 3em;">
+                🎵
+            </div>
+            <audio controls>
+                <source src="music.mp3" type="audio/mpeg">
+                Brauzeringiz audioni qo'llab-quvvatlamaydi.
+            </audio>
+            <div class="card-content">
+                <div class="card-title">Audio Pleyer</div>
+                <div class="card-desc">Standart HTML5 `<audio>` boshqaruv pulti.</div>
+            </div>
+        </div>
+
+        <div class="media-card">
+            <iframe src="https://open.spotify.com/embed/artist/0dEXNqZ7pyHB3B4Ak9SIuz?utm_source=generator" 
+                    height="200" allow="encrypted-media"></iframe>
+            <div class="card-content">
+                <div class="card-title">Spotify Musiqa</div>
+                <div class="card-desc">Spotify albomi yoki pleylistini `embed` qilish.</div>
+            </div>
+        </div>
+
+        <div class="media-card">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.119763973046!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1645534553322!5m2!1sen!2sus" 
+                    height="200" loading="lazy"></iframe>
+            <div class="card-content">
+                <div class="card-title">Google Xarita</div>
+                <div class="card-desc">Jonli xaritani saytga integratsiya qilish.</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
